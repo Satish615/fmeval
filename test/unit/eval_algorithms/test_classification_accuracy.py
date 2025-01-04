@@ -39,9 +39,9 @@ CLASSIFICATION_DATASET = ray.data.from_items(
     [
         {
             DatasetColumns.MODEL_INPUT.value.name: "Delicious cake! Would buy again.",
-            DatasetColumns.TARGET_OUTPUT.value.name: "4",
+            DatasetColumns.TARGET_OUTPUT.value.name: "3",
             DatasetColumns.CATEGORY.value.name: "brownie",
-            DatasetColumns.MODEL_OUTPUT.value.name: "4",
+            DatasetColumns.MODEL_OUTPUT.value.name: "5",
         },
         {
             DatasetColumns.MODEL_INPUT.value.name: "Tasty cake! Must eat.",
