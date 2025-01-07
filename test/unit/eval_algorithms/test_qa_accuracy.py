@@ -96,7 +96,9 @@ QA_DATASET = ray.data.from_items(
     ]
 )
 
-QA_DATASET_WITHOUT_MODEL_OUTPUT = QA_DATASET.drop_columns(DatasetColumns.MODEL_OUTPUT.value.name)
+model_output_cols = [col for col in QA_DATASET.columns if col.endswith("model_output")]
+
+QA_DATASET_WITHOUT_MODEL_OUTPUT = QA_DATASET.drop_columns(model_output_cols)
 
 QA_DATASET_WITHOUT_MODEL_INPUT = QA_DATASET.drop_columns(DatasetColumns.MODEL_INPUT.value.name)
 
