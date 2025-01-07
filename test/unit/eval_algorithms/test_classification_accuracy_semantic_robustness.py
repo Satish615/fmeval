@@ -56,7 +56,7 @@ DATASET = ray.data.from_items(
 
 DATASET_WITHOUT_CATEGORY = DATASET.drop_columns(cols=[DatasetColumns.CATEGORY.value.name])
 
-model_output_cols = [col for col in DATASET.column_names() if col.endswith("model_output")]
+model_output_cols = [col for col in DATASET._dataset.column_names() if col.endswith("model_output")]
 
 DATASET_WITHOUT_MODEL_OUTPUT = DATASET.drop_columns(model_output_cols)
 
