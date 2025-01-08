@@ -1,4 +1,4 @@
-from enum import Enum, auto
+from enum import Enum
 from dataclasses import dataclass
 from collections import OrderedDict
 from typing import Optional
@@ -79,9 +79,9 @@ class DatasetColumns(Enum):
     SENT_MORE_LOG_PROB = Column(name="sent_more_log_prob", should_cast=False)
     SENT_LESS_LOG_PROB = Column(name="sent_less_log_prob", should_cast=False)
     ERROR = Column(name="error", should_cast=False)
-
-    def __init__(self, should_cast):
-        self._value_ = Column(should_cast=should_cast, name=auto())
+#
+#     def __init__(self, should_cast):
+#         self._value_ = Column(should_cast=should_cast, name=auto())
 
     def __str__(self):
         return self.value.name
