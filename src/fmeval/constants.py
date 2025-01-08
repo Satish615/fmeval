@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enum, auto
 from dataclasses import dataclass
 from collections import OrderedDict
 from typing import Optional
