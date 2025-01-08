@@ -47,7 +47,7 @@ class Column:
         columns is not even a possibility to begin with.
     """
 
-    name: str
+    name: str = None
     should_cast: Optional[bool] = None
 
 
@@ -74,11 +74,17 @@ class DatasetColumns(Enum):
     CONTEXT = Column(name="context", should_cast=True)
     SENT_MORE_INPUT = Column(name="sent_more_input", should_cast=True)
     SENT_LESS_INPUT = Column(name="sent_less_input", should_cast=True)
-    SENT_MORE_PROMPT = Column(name="sent_more_prompt")
-    SENT_LESS_PROMPT = Column(name="sent_less_prompt")
+    SENT_MORE_PROMPT = Column(name="sent_more_prompt", should_cast=False)
+    SENT_LESS_PROMPT = Column(name="sent_less_prompt", should_cast=False)
     SENT_MORE_LOG_PROB = Column(name="sent_more_log_prob", should_cast=False)
     SENT_LESS_LOG_PROB = Column(name="sent_less_log_prob", should_cast=False)
     ERROR = Column(name="error", should_cast=False)
+
+    def __init__(self, should_cast):
+        self._value_ = Column(should_cast=should_cast, name=auto())
+
+    def __str__(self):
+        return self.value.name
 
 
 DATASET_COLUMNS = OrderedDict((col.value.name, col) for col in DatasetColumns)

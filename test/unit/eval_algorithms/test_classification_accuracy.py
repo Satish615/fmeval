@@ -60,7 +60,7 @@ CLASSIFICATION_DATASET = ray.data.from_items(
 
 
 CLASSIFICATION_DATASET_WITHOUT_MODEL_OUTPUT = CLASSIFICATION_DATASET.drop_columns(
-    [DatasetColumns.MODEL_OUTPUT.value.name]
+    DatasetColumns.MODEL_OUTPUT.value.name
 )
 
 CLASSIFICATION_DATASET_WITHOUT_MODEL_INPUT = CLASSIFICATION_DATASET.drop_columns(DatasetColumns.MODEL_INPUT.value.name)
