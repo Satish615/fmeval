@@ -47,7 +47,7 @@ class Column:
         columns is not even a possibility to begin with.
     """
 
-    name: str = None
+    name: str
     should_cast: Optional[bool] = None
 
 
