@@ -21,6 +21,10 @@ jobs:
         run: |
           ./devtool env_setup
 
+      - name: Disk Space Environment
+        run: |
+          df -h
+
       - name: Install dev dependencies with poetry
         run: |
           ./devtool install_deps_dev
