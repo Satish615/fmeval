@@ -56,7 +56,7 @@ jobs:
         run: |
           df -h
 
-  test_coverage_python_311:
+  test_coverage_python_312:
     runs-on: ubuntu-latest
     env:
       PYTHONWARNINGS: ignore
