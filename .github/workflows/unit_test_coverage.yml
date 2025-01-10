@@ -47,11 +47,16 @@ jobs:
           ./devtool build_package
           echo "Package build Succeeded. 😊"
 
+      - name: clean up venv
+        run: |
+          deactivate
+          rm -rf .fmeval_venv
+
       - name: Disk Space after
         run: |
           df -h
 
-  test_coverage_python_313:
+  test_coverage_python_311:
     runs-on: ubuntu-latest
     env:
       PYTHONWARNINGS: ignore
@@ -88,6 +93,15 @@ jobs:
         run: |
           ./devtool build_package
           echo "Package build Succeeded. 😊"
+
+      - name: Disk Space after
+        run: |
+          df -h
+
+      - name: clean up venv
+        run: |
+          deactivate
+          rm -rf .fmeval_venv
 
       - name: Disk Space after
         run: |
