@@ -49,7 +49,6 @@ jobs:
 
       - name: clean up venv
         run: |
-          deactivate
           rm -rf .fmeval_venv
 
       - name: Disk Space after
@@ -100,7 +99,6 @@ jobs:
 
       - name: clean up venv
         run: |
-          deactivate
           rm -rf .fmeval_venv
 
       - name: Disk Space after
