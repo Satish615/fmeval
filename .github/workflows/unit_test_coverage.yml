@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        fail-fast: false
         python-version: ['3.10', '3.11', '3.12' ]
     env:
       PYTHONWARNINGS: ignore
@@ -72,7 +73,6 @@ jobs:
 
       - name: clean up venv
         run: |
-          source my_venv/bin/activate
           rm -rf .fmeval_venv/
 
       - name: Disk Space after
