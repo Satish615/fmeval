@@ -9,8 +9,11 @@ env:
   AWS_DEFAULT_REGION: us-west-2
 
 jobs:
-  free_disk_space:
+  test_coverage_python:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12' ]
     env:
       PYTHONWARNINGS: ignore
     steps:
@@ -30,15 +33,6 @@ jobs:
           docker-images: true
           swap-storage: true
 
-  test_coverage_python:
-    needs: free_disk_space
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ['3.10', '3.11', '3.12' ]
-    env:
-      PYTHONWARNINGS: ignore
-    steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
