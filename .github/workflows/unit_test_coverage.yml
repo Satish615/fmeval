@@ -9,8 +9,11 @@ env:
   AWS_DEFAULT_REGION: us-west-2
 
 jobs:
-  test_coverage_python_311:
+  test_coverage_python:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ '3.10', '3.11', '3.12' ]
     env:
       PYTHONWARNINGS: ignore
     steps:
@@ -18,7 +21,7 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: ${{ matrix.python-version }}
 
       - name: Setup Environment
         run: |
@@ -50,57 +53,6 @@ jobs:
       - name: clean up venv
         run: |
           source my_venv/bin/activate 
-          rm -rf .fmeval_venv/
-
-      - name: Disk Space after
-        run: |
-          df -h
-
-  test_coverage_python_312:
-    needs: test_coverage_python_311
-    runs-on: ubuntu-latest
-    env:
-      PYTHONWARNINGS: ignore
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-
-      - name: Setup Environment
-        run: |
-          ./devtool env_setup
-
-      - name: Create virtual env
-        run: |
-          python -m venv .fmeval_venv
-          source .fmeval_venv/bin/activate
-
-      - name: Install dependencies with poetry
-        run: |
-          ./devtool install_deps
-
-      - name: Disk Space Environment
-        run: |
-          df -h
-
-      - name: Test with code coverage
-        run: |
-          ./devtool unit_test_with_coverage
-          echo "All build and unit tests passed."
-
-      - name: Build Package binary wheel
-        run: |
-          ./devtool build_package
-          echo "Package build Succeeded. 😊"
-
-      - name: Disk Space after
-        run: |
-          df -h
-
-      - name: clean up venv
-        run: |
           rm -rf .fmeval_venv/
 
       - name: Disk Space after
