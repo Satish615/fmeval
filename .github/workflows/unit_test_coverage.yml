@@ -52,7 +52,7 @@ jobs:
 
       - name: clean up venv
         run: |
-          source my_venv/bin/activate 
+          source my_venv/bin/activate
           rm -rf .fmeval_venv/
 
       - name: Disk Space after
