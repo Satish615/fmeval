@@ -45,6 +45,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Disk Space Environment
+        run: |
+          df -h
+
       - name: Setup Environment
         run: |
           ./devtool env_setup
