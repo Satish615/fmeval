@@ -49,13 +49,15 @@ jobs:
 
       - name: clean up venv
         run: |
-          rm -rf .fmeval_venv
+          source my_venv/bin/activate 
+          rm -rf .fmeval_venv/
 
       - name: Disk Space after
         run: |
           df -h
 
   test_coverage_python_312:
+    needs: test_coverage_python_311
     runs-on: ubuntu-latest
     env:
       PYTHONWARNINGS: ignore
@@ -99,7 +101,7 @@ jobs:
 
       - name: clean up venv
         run: |
-          rm -rf .fmeval_venv
+          rm -rf .fmeval_venv/
 
       - name: Disk Space after
         run: |
